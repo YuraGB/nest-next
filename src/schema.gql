@@ -1,0 +1,36 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CreateArticleDto {
+  href: String!
+  label: String!
+  shirtDescription: String!
+  source: String!
+  date: DateTime!
+  picture: String
+  video: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  article: [CreateArticleDto!]!
+}
+
+type Mutation {
+  createArticle(input: ArticleInput!): CreateArticleDto!
+}
+
+input ArticleInput {
+  href: String!
+  label: String!
+  shirtDescription: String!
+  source: String!
+  date: DateTime!
+  picture: String
+  video: String
+}
