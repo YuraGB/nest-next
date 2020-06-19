@@ -13,6 +13,9 @@ export class Article extends Document {
     shirtDescription!: string;
 
     @Prop()
+    description!: string;
+
+    @Prop()
     source!: string;
 
     @Prop()

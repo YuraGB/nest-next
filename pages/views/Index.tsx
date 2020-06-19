@@ -5,25 +5,18 @@ import gql from 'graphql-tag';
 import img from "../../assets/background/doomsdayClock.jpg";
 import Layout from "../../hoc/Layout/Layout";
 import { initializeApollo } from '../../lib/apolloClient';
+import { useQuery } from "@apollo/react-hooks";
 
-const query = gql`
-mutation {
-  createDDArticle(input: {
-    href: "DDArticle",
-    label:"DDArticle",
-    shirtDescription:"test shirtDesc", 
-    source:"sourceTest",
-    date: "Wed Jun 17 2020 14:12:43 GMT+0300 (Eastern European Summer Time)",
-    picture: "testPictufgre",
-    description: "Deeeeeeeeeescription"
-  })
-  {
-    href, label, shirtDescription, source, date, description
-  }
+export const query = gql`
+query {
+    article {href label}
+
 }`;
 
-const Index: NextPage = (props: any) => {
-    console.log(props);
+const Index: NextPage = () => {
+    const {data} = useQuery(query);
+    console.log(data);
+
     return (
         <Layout>
             <div>Hello!!!!!!!!!!</div>
@@ -41,8 +34,8 @@ const Index: NextPage = (props: any) => {
 export async function getStaticProps() {
     const apolloClient = initializeApollo();
 
-    await apolloClient.mutate({
-        mutation: query
+    await apolloClient.query({
+        query: query
     });
 
     return {

@@ -7,14 +7,25 @@ import { CreateArticleDto } from "./dto/create-article.dto";
 
 @Injectable()
 export class ArticleService {
-    constructor(@InjectModel('Article') private articleModel: Model<Article>) {}
+    constructor(
+        @InjectModel('DoomsDayArticle') private DDArticleModel: Model<Article>,
+        @InjectModel('NegligenceArticle') private NGArticleModel: Model<Article>,
+        ) {}
 
-    async create(createCatDto: CreateArticleDto): Promise<Article> {
-        const createdCat = new this.articleModel(createCatDto);
-        return createdCat.save();
+    async createDDArticle(createCatDto: CreateArticleDto): Promise<Article> {
+        const createdArticle = new this.DDArticleModel(createCatDto);
+        return createdArticle.save();
+    }
+
+    async createNGArticle(createCatDto: CreateArticleDto): Promise<Article> {
+        const createdArticle = new this.NGArticleModel(createCatDto);
+        return createdArticle.save();
     }
 
     async findAll(): Promise<Article[]> {
-        return this.articleModel.find().exec();
+        const DDArticles = await this.DDArticleModel.find().exec();
+        const NGArticles = await this.NGArticleModel.find().exec();
+
+        return [...DDArticles, ...NGArticles];
     }
 }

@@ -12,6 +12,9 @@ export class CreateArticleDto {
     shirtDescription!: string;
 
     @Field()
+    description!: string;
+
+    @Field()
     source!: string;
 
     @Field()

@@ -6,6 +6,7 @@ type CreateArticleDto {
   href: String!
   label: String!
   shirtDescription: String!
+  description: String!
   source: String!
   date: DateTime!
   picture: String
@@ -22,13 +23,15 @@ type Query {
 }
 
 type Mutation {
-  createArticle(input: ArticleInput!): CreateArticleDto!
+  createDDArticle(input: ArticleInput!): CreateArticleDto!
+  createNGArticle(input: ArticleInput!): CreateArticleDto!
 }
 
 input ArticleInput {
   href: String!
   label: String!
   shirtDescription: String!
+  description: String!
   source: String!
   date: DateTime!
   picture: String

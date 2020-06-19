@@ -6,7 +6,10 @@ import { ArticleSchema } from "./graphql/schema/articles.schema";
 import { ArticleService } from "./articles.service";
 
 @Module({
-    imports: [MongooseModule.forFeature([{ name: 'Article', schema: ArticleSchema }])],
+    imports: [MongooseModule.forFeature([
+        { name: 'DoomsDayArticle', schema: ArticleSchema },
+        { name: 'NegligenceArticle', schema: ArticleSchema }
+    ])],
     providers: [ArticlesResolver, ArticleService]
 })
 export class ArticlesModule {}

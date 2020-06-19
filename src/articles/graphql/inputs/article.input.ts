@@ -12,6 +12,9 @@ export class ArticleInput {
     shirtDescription!: string;
 
     @Field()
+    description!: string;
+
+    @Field()
     source!: string;
 
     @Field()

@@ -1,5 +1,5 @@
 import { ApolloProvider } from '@apollo/react-hooks'
-import { useApollo } from '../../lib/apolloClient';
+import { useApollo } from '../lib/apolloClient';
 import React from "react";
 
 export default function App({ Component, pageProps }:any) {

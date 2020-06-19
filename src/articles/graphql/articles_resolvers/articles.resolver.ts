@@ -1,7 +1,8 @@
 import {Resolver, Query, Mutation, Args} from '@nestjs/graphql';
+
 import { ArticleService } from "../../articles.service";
 import { CreateArticleDto } from "../../dto/create-article.dto";
-import {ArticleInput} from "../inputs/article.input";
+import { ArticleInput } from "../inputs/article.input";
 
 @Resolver()
 export class ArticlesResolver {
@@ -15,7 +16,12 @@ export class ArticlesResolver {
     }
 
     @Mutation(() => CreateArticleDto)
-    async createArticle(@Args('input') input: ArticleInput) {
-        return this.articleService.create(input);
+    async createDDArticle(@Args('input') input: ArticleInput) {
+        return this.articleService.createDDArticle(input);
+    }
+
+    @Mutation(() => CreateArticleDto)
+    async createNGArticle(@Args('input') input: ArticleInput) {
+        return this.articleService.createNGArticle(input);
     }
 }
