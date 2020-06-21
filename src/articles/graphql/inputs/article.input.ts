@@ -1,4 +1,4 @@
-import {Field, InputType} from "@nestjs/graphql";
+import { Field, InputType } from "@nestjs/graphql";
 
 @InputType()
 export class ArticleInput {
@@ -12,6 +12,9 @@ export class ArticleInput {
     shirtDescription!: string;
 
     @Field()
+    description!: string;
+
+    @Field()
     source!: string;
 
     @Field()
@@ -22,4 +25,7 @@ export class ArticleInput {
 
     @Field({ nullable: true })
     video!:  string;
+
+    @Field()
+    type!: string | '';
 }

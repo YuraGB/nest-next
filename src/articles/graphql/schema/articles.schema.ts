@@ -13,6 +13,9 @@ export class Article extends Document {
     shirtDescription!: string;
 
     @Prop()
+    description!: string;
+
+    @Prop()
     source!: string;
 
     @Prop()
@@ -21,8 +24,11 @@ export class Article extends Document {
     @Prop({ nullable: true })
     picture?: string;
 
-    @Prop()
+    @Prop({ nullable: true })
     video?: string;
+
+    @Prop()
+    type!: string;
 }
 
 export const ArticleSchema = SchemaFactory.createForClass(Article);

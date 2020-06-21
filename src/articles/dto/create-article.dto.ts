@@ -12,6 +12,9 @@ export class CreateArticleDto {
     shirtDescription!: string;
 
     @Field()
+    description!: string;
+
+    @Field()
     source!: string;
 
     @Field()
@@ -22,4 +25,7 @@ export class CreateArticleDto {
 
     @Field({ nullable: true })
     video?:  string;
+
+    @Field()
+    type!: string;
 }
