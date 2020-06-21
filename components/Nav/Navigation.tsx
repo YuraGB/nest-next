@@ -1,13 +1,19 @@
 import React from 'react';
 
 import NavItem from "./NavItem";
+import { Articles } from "../../system/types";
+import listPerform from './lib/Navigation_structurize';
 
-const Navigation: React.FC = () => {
+const Navigation: React.FC<{articles:Articles[]}> = ({articles}) => {
+    const list = listPerform(articles);
+
     return (
         <nav className='navigation'>
             <ul>
-                <NavItem key={'1'} title='1960' url='/articles/1960'/>
-                <NavItem key={'2'} title='1960' url='/articles/1960'/>
+                {
+                    Object.keys(list)
+                    .map(link => <NavItem key={link} title='1960' url='/articles/1960' articles={list[link]}/>                      )
+                }
             </ul>
             <style jsx>{`
                 .navigation {

@@ -1,6 +1,5 @@
 import { ApolloProvider } from '@apollo/react-hooks'
 import { useApollo } from '../lib/apolloClient';
-import React from "react";
 
 export default function App({ Component, pageProps }:any) {
     const apolloClient = useApollo(pageProps.initialApolloState);
@@ -10,4 +9,4 @@ export default function App({ Component, pageProps }:any) {
             <Component {...pageProps} />
         </ApolloProvider>
     )
-}
+};

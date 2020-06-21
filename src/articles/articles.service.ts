@@ -1,7 +1,7 @@
-
-import { Model } from 'mongoose';
+import { Connection, Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
+import { InjectModel, InjectConnection } from '@nestjs/mongoose';
+
 import { Article } from "./graphql/schema/articles.schema";
 import { CreateArticleDto } from "./dto/create-article.dto";
 
@@ -10,7 +10,8 @@ export class ArticleService {
     constructor(
         @InjectModel('DoomsDayArticle') private DDArticleModel: Model<Article>,
         @InjectModel('NegligenceArticle') private NGArticleModel: Model<Article>,
-        ) {}
+        @InjectConnection() private connection: Connection
+    ) {}
 
     async createDDArticle(createCatDto: CreateArticleDto): Promise<Article> {
         const createdArticle = new this.DDArticleModel(createCatDto);
@@ -27,5 +28,14 @@ export class ArticleService {
         const NGArticles = await this.NGArticleModel.find().exec();
 
         return [...DDArticles, ...NGArticles];
+    }
+
+    async findCollections(): Promise<string[] | []> {
+        try {
+            const collectionsNames = await this.connection.db.listCollections().toArray();
+            return collectionsNames;
+        } catch (e) {
+           return [];
+        }
     }
 }

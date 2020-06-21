@@ -25,4 +25,7 @@ export class CreateArticleDto {
 
     @Field({ nullable: true })
     video?:  string;
+
+    @Field()
+    type!: string;
 }

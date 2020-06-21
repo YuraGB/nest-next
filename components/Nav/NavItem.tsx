@@ -1,8 +1,13 @@
 import React from 'react';
 import Link from "next/link";
-import classes from './NativeItem.module.css';
 
-const NavItem: React.FC<{[key:string]: string}> = ({title, url}) => {
+import classes from './NativeItem.module.css';
+import { Articles } from "../../system/types";
+
+const NavItem: React.FC<{[key:string]: string | Articles[]}> =
+    (props) => {
+    const {title, url} = props;
+
     return (
         <li>
             <Link href={url}>
