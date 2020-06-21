@@ -1,19 +1,15 @@
-import * as React from 'react';
-import { NextPage, NextPageContext } from 'next';
+import { NextPage } from 'next';
 
 import img from "../../assets/background/doomsdayClock.jpg";
-
 import Layout from "../../hoc/Layout/Layout";
+import {initializeApollo} from "../../lib/apolloClient";
+import getArticles from "../graphql_requests/queries/getArticles";
 
-interface Props {
-    query: { title?: string };
-}
 
-const Index: NextPage<Props> = ({ query }) => {
-    const greetName = query.title ? query.title : 'World';
+const Index: NextPage<any> = (props) => {
     return (
-        <Layout>
-            <div>Hello!!!!!!!!!, {greetName}!</div>
+        <Layout navProps={props.initialApolloState}>
+            <div>Hello!!!!!!!!!!</div>
             <style jsx global>
                 {`
                     main {
@@ -25,9 +21,24 @@ const Index: NextPage<Props> = ({ query }) => {
     );
 };
 
-Index.getInitialProps = async (ctx: NextPageContext) => {
-    const { query } = ctx;
-    return { query };
+Index.getInitialProps = async () =>{
+    const apolloClient = initializeApollo();
+    await apolloClient.query({
+        query: getArticles('label', 'href', 'type')
+    });
+
+    //extract data from Apollo client cache
+    const extract = apolloClient.cache.extract();
+
+    //perform data for initial state
+    const initState = Object.entries(extract)
+        .filter(query => query[0] !== "ROOT_QUERY")
+        .map(article => article[1]);
+
+    return {
+        initialApolloState: initState,
+        unstable_revalidate: 1,
+    }
 };
 
 export default Index;

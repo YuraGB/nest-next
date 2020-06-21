@@ -1,13 +1,8 @@
-import React from 'react';
-import { useRouter } from 'next/router'
-
-export default () => {
-    const router = useRouter();
-    console.log(router);
+export default (): JSX.Element => {
     return (
         <div>
             The Page
-            <p>Post id: {router.query.id}</p>
+            <p>Post id</p>
         </div>
     )
 };

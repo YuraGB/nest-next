@@ -1,0 +1,8 @@
+{
+    "env": {
+        "MONGO_USER": "yuhur",
+        "MONGO_PASSWORD": "Qj,DfieVfnm",
+        "MONGO_DB": "humans",
+        "NODE_ENV":"development"
+    }
+}

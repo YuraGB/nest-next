@@ -1,11 +1,19 @@
 import React from 'react';
-import Navigation from "../../components/Nav/Navigation";
 
-const Layout: React.FC = ({children}) => {
+import Navigation from "../../components/Nav/Navigation";
+import { Articles } from "../../system/types";
+
+const Layout: React.FC<{navProps:Articles[]}> = (
+    {
+        children,
+        navProps
+    }
+    ) => {
+
     return (
         <>
             <header>
-                <Navigation/>
+                <Navigation articles={navProps}/>
             </header>
             <main>
                 {children}
