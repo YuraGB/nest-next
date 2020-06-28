@@ -1,9 +1,22 @@
+/**
+ * Navigation
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 import React from 'react';
 
 import NavItem from "./NavItem";
 import { Articles } from "../../system/types";
 import listPerform from './lib/Navigation_structurize';
+import LinkData from './lib/categoryLink';
 
+/**
+ * Navigation element
+ *
+ * @param articles
+ * @return JSX.Element
+ */
 const Navigation: React.FC<{articles:Articles[]}> = ({articles}) => {
     const list = listPerform(articles);
 
@@ -12,7 +25,17 @@ const Navigation: React.FC<{articles:Articles[]}> = ({articles}) => {
             <ul>
                 {
                     Object.keys(list)
-                    .map(link => <NavItem key={link} title='1960' url='/articles/1960' articles={list[link]}/>                      )
+                    .map(link => {
+                        const linkInfo = LinkData(link);
+
+                        return <NavItem
+                            key={link}
+                            title={linkInfo.title}
+                            url={linkInfo.link}
+                            articles={list[link]}
+                            as={linkInfo.as}
+                        />
+                    })
                 }
             </ul>
             <style jsx>{`

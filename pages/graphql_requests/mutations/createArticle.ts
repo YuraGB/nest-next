@@ -1,11 +1,19 @@
+/**
+ * Mutation
+ * Create Article
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 import gql from 'graphql-tag';
 import { ArticleInput } from "../../../src/articles/graphql/inputs/article.input";
+import { DocumentNode } from "graphql";
 
 export default (
     type: string,
     input: ArticleInput,
     fields: string[] | string
-) => gql`
+): DocumentNode => gql`
     mutation {
         ${type === 'DD' ? 'createDDArticle' : 'createNGArticle'} (
             ${JSON.stringify({...input, ...{type: type}})}   

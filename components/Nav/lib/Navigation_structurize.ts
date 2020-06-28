@@ -1,7 +1,18 @@
-import { Articles, Categiries } from "../../../system/types";
+/**
+ * Navigation structure functionality
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
+import { Articles, Categories } from "../../../system/types";
 
-export default (list: Articles[]): Categiries => {
-    const initObj: Categiries = {};
+/**
+ *
+ * @param list
+ * @return Categories[]
+ */
+export default (list: Articles[]): Categories => {
+    const initObj: Categories = {};
 
     if (list.length) {
         //define unique 'types' of the articles

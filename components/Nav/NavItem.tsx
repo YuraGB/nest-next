@@ -1,30 +1,42 @@
+/**
+ * NavItem
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 import React from 'react';
 import Link from "next/link";
 
 import classes from './NativeItem.module.css';
-import { Articles } from "../../system/types";
+import CatalogSection from "./CatalogSection/CatalogSection";
+import { NavItemType } from "../../system/types";
 
-const NavItem: React.FC<{[key:string]: string | Articles[]}> =
-    (props) => {
-    const {title, url} = props;
-
+/**
+ * NavItem
+ *
+ * @param title
+ * @param url
+ * @param as
+ * @param articles
+ * @return JSX.Element
+ */
+const NavItem: React.FC<NavItemType> =
+    ({title, url = '/', as = '/', articles} ) => {
     return (
-        <li>
-            <Link href={url}>
-                <a className={classes.Link}>{[...title].map(
-                        (letter, ind) => letter ?
-                            <span
-                                style={{transitionDelay: '0.' + ind + 's'}}
-                                key={Math.random()}>
-                                {letter}
-                            </span> : ' ')}
-                </a>
+        <li className={classes.li}>
+            <Link href={url} as={as}>
+                <a className={classes.Link}>{title}</a>
             </Link>
+            <CatalogSection articles={articles}/>
             <style jsx>{`
                 li {
                     list-style: none;
-                    padding: 10px 20px;
-                    border-radius: 3px;                   
+                    border-radius: 3px;
+                    position: relative;
+                    flex-grow: 1;                
+                }
+                a {
+                    display: block;                    
                 }
             `}</style>
         </li>

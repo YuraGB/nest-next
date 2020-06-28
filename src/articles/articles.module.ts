@@ -1,3 +1,9 @@
+/**
+ * Article Module
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 import { Module } from '@nestjs/common';
 
 import { ArticlesResolver } from "./graphql/articles_resolvers/articles.resolver";
