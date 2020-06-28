@@ -1,7 +1,3 @@
-export type NavProps = {
-    article: {[key:string]:string}[]
-}
-
 export type Articles = {
     [key:string]:string
 };
@@ -15,4 +11,4 @@ export type NavItemType = {
     url: string,
     as: string,
     articles: Articles[]
-}
+};

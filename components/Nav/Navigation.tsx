@@ -15,7 +15,7 @@ const Navigation: React.FC<{articles:Articles[]}> = ({articles}) => {
                     Object.keys(list)
                     .map(link => {
                         const linkInfo = LinkData(link);
-                        console.log(list[link]);
+
                         return <NavItem
                             key={link}
                             title={linkInfo.title}
