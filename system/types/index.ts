@@ -9,3 +9,10 @@ export type Articles = {
 export type Categiries =  {
     [key:string]: Articles[]
 };
+
+export type NavItemType = {
+    title: string,
+    url: string,
+    as: string,
+    articles: Articles[]
+}

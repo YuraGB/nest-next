@@ -2,29 +2,26 @@ import React from 'react';
 import Link from "next/link";
 
 import classes from './NativeItem.module.css';
-import { Articles } from "../../system/types";
+import CatalogSection from "./CatalogSection/CatalogSection";
+import { NavItemType } from "../../system/types";
 
-const NavItem: React.FC<{[key:string]: string | Articles[]}> =
-    (props) => {
-    const {title, url} = props;
-
+const NavItem: React.FC<NavItemType> =
+    ({title, url = '/', as = '/', articles} ) => {
     return (
         <li>
-            <Link href={url}>
-                <a className={classes.Link}>{[...title].map(
-                        (letter, ind) => letter ?
-                            <span
-                                style={{transitionDelay: '0.' + ind + 's'}}
-                                key={Math.random()}>
-                                {letter}
-                            </span> : ' ')}
-                </a>
+            <Link href={url} as={as}>
+                <a className={classes.Link}>{title}</a>
             </Link>
+            <CatalogSection articles={articles}/>
             <style jsx>{`
                 li {
                     list-style: none;
-                    padding: 10px 20px;
-                    border-radius: 3px;                   
+                    border-radius: 3px;  
+                    flex-grow: 1;                
+                }
+                a {
+                    display: block;
+                    
                 }
             `}</style>
         </li>

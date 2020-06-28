@@ -17,4 +17,10 @@ export class AppController {
   public article(@Res() res: RenderableResponse) {
     res.render('articles/1960');
   }
+
+  @Get('views/category/:name')
+  public category(@Res() res: RenderableResponse) {
+    console.log(name);
+    res.render('category/[name]');
+  }
 }

@@ -1,10 +1,10 @@
 import { NextPage } from 'next';
+import {parse} from 'url'
 
 import img from "../../assets/background/doomsdayClock.jpg";
 import Layout from "../../hoc/Layout/Layout";
 import {initializeApollo} from "../../lib/apolloClient";
 import getArticles from "../graphql_requests/queries/getArticles";
-
 
 const Index: NextPage<any> = (props) => {
     return (
