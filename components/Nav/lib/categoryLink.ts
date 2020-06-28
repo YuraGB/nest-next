@@ -1,4 +1,15 @@
+/**
+ * functionality for nav link
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 
+/**
+ *
+ * @param type
+ * @return {link, title, as}
+ */
 export default (type: string): {
     link: string,
     title: string,

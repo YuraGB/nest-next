@@ -1,3 +1,9 @@
+/**
+ * Navigation
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 import React from 'react';
 
 import NavItem from "./NavItem";
@@ -5,6 +11,12 @@ import { Articles } from "../../system/types";
 import listPerform from './lib/Navigation_structurize';
 import LinkData from './lib/categoryLink';
 
+/**
+ * Navigation element
+ *
+ * @param articles
+ * @return JSX.Element
+ */
 const Navigation: React.FC<{articles:Articles[]}> = ({articles}) => {
     const list = listPerform(articles);
 

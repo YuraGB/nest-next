@@ -1,0 +1,27 @@
+.catalogLinks {
+    width: 100%;
+    position: absolute;
+    background: #052020;
+    height: 0;
+    max-height: calc(100vh - 44px);
+    top: 100%;
+    display: flex;
+}
+
+.list {
+    display: inline-block;
+    flex-grow: 1;
+    list-style: none;
+    padding: 20px;
+    box-sizing: border-box;
+
+    a {
+        text-decoration: none;
+        padding: 5px;
+        display: inline-block;
+    }
+}
+
+.pictures {
+    width: 50%;
+}

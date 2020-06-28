@@ -1,8 +1,14 @@
+/**
+ * 
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 export type Articles = {
     [key:string]:string
 };
 
-export type Categiries =  {
+export type Categories =  {
     [key:string]: Articles[]
 };
 

@@ -1,3 +1,9 @@
+/**
+ * Article resolvers
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 import {Resolver, Query, Mutation, Args} from '@nestjs/graphql';
 
 import { ArticleService } from "../../articles.service";

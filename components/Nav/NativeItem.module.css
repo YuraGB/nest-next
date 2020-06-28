@@ -63,10 +63,27 @@
             text-shadow: 1px 1px 0px black, 2px 2px 0px black, 3px 3px 0px black;
         }
     }
+}
 
-    &.hover-color {
-        &:hover {
-            black: #ddd;
+.li {
+    > div {
+        height: 0;
+        transition: height 0.5s ease-in;
+        overflow: hidden;
+
+        ul {
+            opacity: 0;
+            transition: opacity 0.2s;
         }
+    }
+
+    &:hover {
+       > div {
+           height: 400px;
+
+           ul {
+               opacity: 1;
+           }
+       }
     }
 }

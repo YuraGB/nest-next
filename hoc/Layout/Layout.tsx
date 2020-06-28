@@ -1,8 +1,21 @@
+/**
+ * Layout HOC
+ *
+ * @author Yurii Huriianov <yuhur1985@gmail.com
+ * @copyright 2020
+ */
 import React from 'react';
 
 import Navigation from "../../components/Nav/Navigation";
 import { Articles } from "../../system/types";
 
+/**
+ * Layout
+ *
+ * @param children
+ * @param navProps
+ * @return JSX.Element
+ */
 const Layout: React.FC<{navProps:Articles[]}> = (
     {
         children,
