@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "jsx": "preserve",
     "strict": true,
     "pretty": true,
@@ -35,9 +36,9 @@
   "include": [
     "./pages/**/*",
     "./src/**/*",
-    "./ui/**/*"
+    "./ui/**/*",
+    "next-env.d.ts",
+    "declaration.d.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules", "build"]
 }
