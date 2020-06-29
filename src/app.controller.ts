@@ -26,7 +26,6 @@ export class AppController {
 
   @Get('views/category/:name')
   public category(@Res() res: RenderableResponse) {
-    console.log(name);
     res.render('category/[name]');
   }
 }
