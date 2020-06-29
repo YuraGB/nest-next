@@ -7,7 +7,7 @@
 import { Module } from '@nestjs/common';
 import { RenderModule } from 'nest-next';
 import Next from 'next';
-import { join } from 'path';
+import path, { join } from 'path';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -28,4 +28,5 @@ import config from './config.json';
   ],
   controllers: [AppController],
 })
-export class AppModule {}
+export class AppModule {
+}
