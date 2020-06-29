@@ -20,16 +20,15 @@ import Link from "next/link";
  */
 const CatalogSection: React.FC<{articles: Articles[]}> =
     ({articles}) => {
-        console.log(articles);
     return (
         <div className={classes.catalogLinks}>
             <div className={classes.pictures}>
 
             </div>
             <ul className={classes.list}>
-                {articles.map(article => {
+                {articles.map((article, ind) => {
                     return (
-                    <li>
+                    <li key={article.href + ind}>
                         <Link href={article.href}
                               as={article.href}>
                             <a>
