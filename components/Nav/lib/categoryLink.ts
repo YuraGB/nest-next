@@ -5,28 +5,27 @@
  * @copyright 2020
  */
 
+import { CategoryLinkType } from "../../../system/types";
+import { DOOMSDAY, NEGLIGENCE } from "../../../system/category/categoryNames";
+
 /**
  *
  * @param type
  * @return {link, title, as}
  */
-export default (type: string): {
-    link: string,
-    title: string,
-    as: string
-} => {
+export default (type: string): CategoryLinkType => {
     switch(type) {
         case 'DD':
             return {
                 link: '/views/category/[name]',
                 title: 'near the Doomsday',
-                as: '/views/category/Doomsday'
+                as: `/views/category/${DOOMSDAY}`
             };
         case 'NG': {
             return {
                 link: '/views/category/[name]',
                 title: 'the human negligence',
-                as: '/views/category/negligence'
+                as: `/views/category/${NEGLIGENCE}`
             }
         }
         default: {
