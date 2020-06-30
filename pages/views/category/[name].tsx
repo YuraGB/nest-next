@@ -6,23 +6,32 @@
  * @copyright 2020
  */
 import { useRouter, withRouter } from 'next/router'
-import { useQuery } from '@apollo/react-hooks';
 import { NextPage } from "next";
+import { ApolloQueryResult } from "apollo-client";
+
 import Layout from "../../../hoc/Layout/Layout";
 import img from "../../../assets/background/doomsdayClock.jpg";
-import { initializeApollo } from "../../../lib/apolloClient";
 import getCategoryArticles from "../../graphql_requests/queries/getCategoryArticles";
-import getArticles from "../../graphql_requests/queries/getArticles";
+import { useEffect, useState } from "react";
+import useCustomHookInitState from "../../customHooks/useCustomHookInitState";
 
-const Category: NextPage = (props: any): JSX.Element => {
+const Category: NextPage = (): JSX.Element => {
     const router = useRouter();
-    console.log(router, 'query');
-/*    const { loading, error, data } = useQuery(getCategoryArticles(), {
-        variables: { language: 'english' },
-    });
-    console.log(loading, error, data)*/
+    const [data, setData] = useState<any>(null);
+    const { runQuery } = useCustomHookInitState();
+
+    useEffect(()=> {
+        if(router && router.query.name !== undefined) {
+            runQuery(getCategoryArticles(router.query.name,'href'))
+                .then((query: ApolloQueryResult<any>) =>
+                    setData(
+                        query.data
+                    ));
+        }
+    }, [router]);
+
     return (
-        <Layout navProps={props.initialApolloState || {}}>
+        <Layout>
             <div>Hello!!!!!!!!!!</div>
             <style jsx global>
                 {`
@@ -33,26 +42,6 @@ const Category: NextPage = (props: any): JSX.Element => {
             </style>
         </Layout>
     )
-};/*
-
-Category.getInitialProps = async () => {
-    const apolloClient = initializeApollo();
-    await apolloClient.query({
-        query: getArticles('label', 'href', 'type')
-    });
-
-    //extract data from Apollo client cache
-    const extract = apolloClient.cache.extract();
-
-    //perform data for initial state
-    const initState = Object.entries(extract)
-        .filter(query => query[0] !== "ROOT_QUERY")
-        .map(article => article[1]);
-
-    return {
-        initialApolloState: initState,
-        unstable_revalidate: 1
-    }
 };
-*/
+
 export default withRouter(Category);

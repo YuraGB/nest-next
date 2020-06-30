@@ -9,6 +9,12 @@ import gql from 'graphql-tag';
 import { ArticleInput } from "../../../src/articles/graphql/inputs/article.input";
 import { DocumentNode } from "graphql";
 
+/**
+ *
+ * @param type
+ * @param input
+ * @param fields
+ */
 export default (
     type: string,
     input: ArticleInput,
@@ -16,7 +22,7 @@ export default (
 ): DocumentNode => gql`
     mutation {
         ${type === 'DD' ? 'createDDArticle' : 'createNGArticle'} (
-            ${JSON.stringify({...input, ...{type: type}})}   
+            input: ${JSON.stringify({...input, ...{type: type}})}   
         ) {
             ${Array.isArray(fields) ? fields.join(' ') : fields}
         }

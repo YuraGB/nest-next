@@ -8,10 +8,13 @@
 import gql from 'graphql-tag';
 import { DocumentNode } from "graphql";
 
-export default ( type= '', ...fields: string[]): DocumentNode => gql`
-    query {
-        getCategoryArticles (${JSON.stringify({type: type})}) {
-            ${fields.join(' ')}
+export default ( type: string | string[], ...fields: string[]): DocumentNode => {
+    return gql`
+        query {
+            getCategoryArticles (
+                input: {type: "${type}"}
+            ) {
+                ${fields.join(' ')}
+            }
         }
-    }
-`;
+`};
