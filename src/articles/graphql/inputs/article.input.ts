@@ -34,4 +34,7 @@ export class ArticleInput {
 
     @Field()
     type!: string | '';
+
+    @Field({ defaultValue: 'views/articles/' })
+    as!: string;
 }

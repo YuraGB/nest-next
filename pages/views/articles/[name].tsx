@@ -9,7 +9,7 @@
 export default (): JSX.Element => {
     return (
         <div>
-            The Page
+            The Article Page
             <p>Post id</p>
         </div>
     )

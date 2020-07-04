@@ -30,7 +30,7 @@ const CatalogSection: React.FC<{articles: Articles[]}> =
                     return (
                     <li key={article.href + ind}>
                         <Link href={article.href}
-                              as={article.href}>
+                              as={article.as + article.label}>
                             <a>
                                 {article.label}
                             </a>

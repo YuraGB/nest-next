@@ -36,6 +36,9 @@ export class Article extends Document {
 
     @Prop()
     type!: string;
+
+    @Prop({ nullable: true })
+    as?: string | 'views/articles/'
 }
 
 export const ArticleSchema = SchemaFactory.createForClass(Article);

@@ -34,4 +34,7 @@ export class CreateArticleDto {
 
     @Field()
     type!: string;
+
+    @Field()
+    as!: string;
 }

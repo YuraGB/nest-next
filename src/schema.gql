@@ -12,6 +12,7 @@ type CreateArticleDto {
   picture: String
   video: String
   type: String!
+  as: String!
 }
 
 """
@@ -43,4 +44,5 @@ input ArticleInput {
   picture: String
   video: String
   type: String!
+  as: String = "views/articles/"
 }
