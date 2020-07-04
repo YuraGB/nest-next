@@ -12,7 +12,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppController } from './app.controller';
-import {ArticlesModule} from "./articles/articles.module";
+import { ArticlesModule } from "./articles/articles.module";
 import config from './config.json';
 
 @Module({

@@ -5,7 +5,6 @@
  * @author Yurii Huriianov <yuhur1985@gmail.com
  * @copyright 2020
  */
-import { useRouter, withRouter } from 'next/router'
 import { NextPage } from "next";
 import { ApolloQueryResult } from "apollo-client";
 
@@ -14,21 +13,23 @@ import img from "../../../assets/background/doomsdayClock.jpg";
 import getCategoryArticles from "../../graphql_requests/queries/getCategoryArticles";
 import { useEffect, useState } from "react";
 import useCustomHookInitState from "../../customHooks/useCustomHookInitState";
+import getArticles from "../../graphql_requests/queries/getArticles";
 
 const Category: NextPage = (): JSX.Element => {
-    const router = useRouter();
     const [data, setData] = useState<any>(null);
-    const { runQuery } = useCustomHookInitState();
+    const { runQuery, router } = useCustomHookInitState();
 
     useEffect(()=> {
         if(router && router.query.name !== undefined) {
-            runQuery(getCategoryArticles(router.query.name,'href'))
+
+            runQuery(getArticles('label', 'href', 'type', 'as'))
                 .then((query: ApolloQueryResult<any>) =>
                     setData(
                         query.data
                     ));
         }
     }, [router]);
+    console.log(data);
 
     return (
         <Layout>
@@ -44,4 +45,4 @@ const Category: NextPage = (): JSX.Element => {
     )
 };
 
-export default withRouter(Category);
+export default Category;

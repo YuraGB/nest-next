@@ -10,8 +10,8 @@ import { RenderableResponse } from "nest-next";
 @Controller()
 export class ArticleController {
 
-    @Get('views/article/:name')
+    @Get('views/articles/:name')
     public article(@Res() res: RenderableResponse) {
-        res.render('articles/[name]');
+        res.render('articles/:name');
     }
 }

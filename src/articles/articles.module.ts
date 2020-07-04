@@ -10,7 +10,7 @@ import { ArticlesResolver } from "./graphql/articles_resolvers/articles.resolver
 import { MongooseModule } from "@nestjs/mongoose";
 import { ArticleSchema } from "./graphql/schema/articles.schema";
 import { ArticleService } from "./articles.service";
-import {ArticleController} from "./articles.provider";
+import {ArticleController} from "./articles.controller";
 
 @Module({
     imports: [MongooseModule.forFeature([
