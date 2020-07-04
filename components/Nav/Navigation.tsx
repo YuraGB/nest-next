@@ -4,27 +4,38 @@
  * @author Yurii Huriianov <yuhur1985@gmail.com
  * @copyright 2020
  */
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { ApolloQueryResult } from "apollo-client";
 
 import NavItem from "./NavItem";
-import { Articles } from "../../system/types";
-import listPerform from './lib/Navigation_structurize';
+import useInitState from '../../pages/customHooks/useCustomHookInitState';
 import LinkData from './lib/categoryLink';
+import getArticles from "../../pages/graphql_requests/queries/getArticles";
+import listPerform from './lib/Navigation_structurize';
 
 /**
  * Navigation element
  *
- * @param articles
  * @return JSX.Element
  */
-const Navigation: React.FC<{articles:Articles[]}> = ({articles}) => {
-    const list = listPerform(articles);
+const Navigation: React.FC = () => {
+    const { runQuery } = useInitState();
+    const [data, setData] = useState<any>(null);
+
+    useEffect(() => {
+        runQuery(
+            getArticles('label', 'href', 'type'))
+            .then((query: ApolloQueryResult<any>) =>
+                setData(
+                    listPerform(query.data.article)
+                ));
+    }, []);
 
     return (
         <nav className='navigation'>
             <ul>
-                {
-                    Object.keys(list)
+                {   data ?
+                    Object.keys(data)
                     .map(link => {
                         const linkInfo = LinkData(link);
 
@@ -32,10 +43,10 @@ const Navigation: React.FC<{articles:Articles[]}> = ({articles}) => {
                             key={link}
                             title={linkInfo.title}
                             url={linkInfo.link}
-                            articles={list[link]}
+                            articles={data[link]}
                             as={linkInfo.as}
                         />
-                    })
+                    }) : null
                 }
             </ul>
             <style jsx>{`
