@@ -11,7 +11,9 @@ type CreateArticleDto {
   date: DateTime!
   picture: String
   video: String
-  type: String!
+  type: String
+  as: String!
+  _id: String
 }
 
 """
@@ -27,6 +29,7 @@ type Query {
   article: [CreateArticleDto!]!
   getCategoryArticles(input: CategoryTypeInput!): [CreateArticleDto!]!
   collections: [CollectionsDto!]!
+  singleArticle(id: String!): CreateArticleDto!
 }
 
 input CategoryTypeInput {
@@ -39,13 +42,14 @@ type Mutation {
 }
 
 input ArticleInput {
-  href: String!
+  href: String = "/views/articles/[name]"
   label: String!
   shirtDescription: String!
   description: String!
   source: String!
-  date: DateTime!
+  date: DateTime = "2020-07-04T16:32:27.712Z"
   picture: String
   video: String
-  type: String!
+  type: String
+  as: String = "/views/articles/"
 }

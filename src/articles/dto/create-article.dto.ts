@@ -32,6 +32,12 @@ export class CreateArticleDto {
     @Field({ nullable: true })
     video?:  string;
 
+    @Field({ nullable: true })
+    type?: string;
+
     @Field()
-    type!: string;
+    as!: string;
+
+    @Field({ nullable: true })
+    _id?: string;
 }

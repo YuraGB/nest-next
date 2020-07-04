@@ -7,12 +7,12 @@
 import { Module } from '@nestjs/common';
 import { RenderModule } from 'nest-next';
 import Next from 'next';
-import path, { join } from 'path';
+import { join } from 'path';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppController } from './app.controller';
-import {ArticlesModule} from "./articles/articles.module";
+import { ArticlesModule } from "./articles/articles.module";
 import config from './config.json';
 
 @Module({

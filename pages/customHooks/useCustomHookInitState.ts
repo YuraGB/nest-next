@@ -9,6 +9,7 @@ import { useApolloClient } from "@apollo/react-hooks";
 import { DocumentNode } from "graphql";
 
 import { CustomHookInitState } from "../../system/types";
+import {useRouter} from "next/router";
 
 /**
  *
@@ -16,11 +17,12 @@ import { CustomHookInitState } from "../../system/types";
  */
 export default (): CustomHookInitState | any => {
     const client = useApolloClient();
+    const router = useRouter();
 
     async function runQuery(query: DocumentNode) {
         const queryResult = await client.query({query: query});
         return queryResult;
     }
 
-    return { client, runQuery };
+    return { client, runQuery, router };
 };

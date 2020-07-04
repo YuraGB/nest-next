@@ -4,7 +4,7 @@
  * @author Yurii Huriianov <yuhur1985@gmail.com
  * @copyright 2020
  */
-import { Connection, Model } from 'mongoose';
+import { Connection, Model, Types } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel, InjectConnection } from '@nestjs/mongoose';
 
@@ -12,6 +12,7 @@ import { Article } from "./graphql/schema/articles.schema";
 import { CreateArticleDto } from "./dto/create-article.dto";
 import { CategoryTypeInput } from "./graphql/inputs/categoryTYpe.input";
 import { DOOMSDAY, NEGLIGENCE} from "../../system/category/categoryNames";
+import {SingleArticleDto} from "./dto/single-article.dto";
 
 @Injectable()
 export class ArticleService {
@@ -66,5 +67,14 @@ export class ArticleService {
         } catch (e) {
            return [];
         }
+    }
+
+    async findSingleArticle(id: string): Promise<Article | null> {
+        const article = await Promise.race([
+            this.DDArticleModel.findOne({_id: Types.ObjectId(id)}).exec(),
+            this.NGArticleModel.findOne({_id: Types.ObjectId(id)}).exec()
+        ]);
+
+        return article;
     }
 }
