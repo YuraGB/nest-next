@@ -26,7 +26,12 @@ type CollectionsDto {
 
 type Query {
   article: [CreateArticleDto!]!
+  getCategoryArticles(input: CategoryTypeInput!): [CreateArticleDto!]!
   collections: [CollectionsDto!]!
+}
+
+input CategoryTypeInput {
+  type: String!
 }
 
 type Mutation {

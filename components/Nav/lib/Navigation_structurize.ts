@@ -13,7 +13,6 @@ import { Articles, Categories } from "../../../system/types";
  */
 export default (list: Articles[]): Categories => {
     const initObj: Categories = {};
-
     if (list.length) {
         //define unique 'types' of the articles
         const articleTypes = new Set(list.map(article => article.type));

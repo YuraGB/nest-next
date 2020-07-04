@@ -13,7 +13,7 @@ import getArticles from "../graphql_requests/queries/getArticles";
 
 const Index: NextPage<any> = (props) => {
     return (
-        <Layout navProps={props.initialApolloState}>
+        <Layout>
             <div>Hello!!!!!!!!!!</div>
             <style jsx global>
                 {`
@@ -26,6 +26,7 @@ const Index: NextPage<any> = (props) => {
     );
 };
 
+/*
 Index.getInitialProps = async () =>{
     const apolloClient = initializeApollo();
     await apolloClient.query({
@@ -45,5 +46,6 @@ Index.getInitialProps = async () =>{
         unstable_revalidate: 1,
     }
 };
+*/
 
 export default Index;

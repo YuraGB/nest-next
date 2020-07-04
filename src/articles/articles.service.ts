@@ -10,6 +10,8 @@ import { InjectModel, InjectConnection } from '@nestjs/mongoose';
 
 import { Article } from "./graphql/schema/articles.schema";
 import { CreateArticleDto } from "./dto/create-article.dto";
+import { CategoryTypeInput } from "./graphql/inputs/categoryTYpe.input";
+import { DOOMSDAY, NEGLIGENCE} from "../../system/category/categoryNames";
 
 @Injectable()
 export class ArticleService {
@@ -34,6 +36,27 @@ export class ArticleService {
         const NGArticles = await this.NGArticleModel.find().exec();
 
         return [...DDArticles, ...NGArticles];
+    }
+
+    async categoryArticles(categoryTypeInput: CategoryTypeInput): Promise<Article[]> {
+        try {
+            switch (categoryTypeInput.type) {
+                case DOOMSDAY: {
+                    return await this.DDArticleModel.find().exec();
+                }
+                case NEGLIGENCE: {
+                    return await this.NGArticleModel.find().exec();
+                }
+                default : {
+                    const DDArticles = await this.DDArticleModel.find().exec();
+                    const NGArticles = await this.NGArticleModel.find().exec();
+
+                    return [...DDArticles, ...NGArticles];
+                }
+            }
+        } catch (e) {
+            return [];
+        }
     }
 
     async findCollections(): Promise<string[] | []> {

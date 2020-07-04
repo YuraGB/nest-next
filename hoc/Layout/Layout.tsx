@@ -16,17 +16,16 @@ import { Articles } from "../../system/types";
  * @param navProps
  * @return JSX.Element
  */
-const Layout: React.FC<{navProps:Articles[]}> = (
+const Layout: React.FC = (
     {
-        children,
-        navProps
+        children
     }
     ) => {
 
     return (
         <>
             <header>
-                <Navigation articles={navProps}/>
+                <Navigation />
             </header>
             <main>
                 {children}
