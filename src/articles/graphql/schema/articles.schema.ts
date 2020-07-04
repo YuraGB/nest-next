@@ -34,8 +34,11 @@ export class Article extends Document {
     @Prop({ nullable: true })
     video?: string;
 
-    @Prop()
-    type!: string;
+    @Prop({ nullable: true })
+    type?: string;
+
+    @Prop({ nullable: true })
+    as?: string;
 }
 
 export const ArticleSchema = SchemaFactory.createForClass(Article);

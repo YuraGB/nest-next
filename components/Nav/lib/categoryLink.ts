@@ -15,13 +15,13 @@ import { DOOMSDAY, NEGLIGENCE } from "../../../system/category/categoryNames";
  */
 export default (type: string): CategoryLinkType => {
     switch(type) {
-        case 'DD':
+        case DOOMSDAY:
             return {
                 link: '/views/category/[name]',
                 title: 'near the Doomsday',
                 as: `/views/category/${DOOMSDAY}`
             };
-        case 'NG': {
+        case NEGLIGENCE: {
             return {
                 link: '/views/category/[name]',
                 title: 'the human negligence',

@@ -24,7 +24,7 @@ const Navigation: React.FC = () => {
 
     useEffect(() => {
         runQuery(
-            getArticles('label', 'href', 'type'))
+            getArticles('label', 'href', 'type', 'as'))
             .then((query: ApolloQueryResult<any>) =>
                 setData(
                     listPerform(query.data.article)

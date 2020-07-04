@@ -8,7 +8,7 @@ import { Field, InputType } from "@nestjs/graphql";
 
 @InputType()
 export class ArticleInput {
-    @Field()
+    @Field({ defaultValue: '/views/articles/[name]' })
     href!: string;
 
     @Field()
@@ -23,7 +23,7 @@ export class ArticleInput {
     @Field()
     source!: string;
 
-    @Field()
+    @Field({ defaultValue: new Date() })
     date!: Date;
 
     @Field({ nullable: true })
@@ -32,6 +32,9 @@ export class ArticleInput {
     @Field({ nullable: true })
     video!:  string;
 
-    @Field()
-    type!: string | '';
+    @Field({ nullable: true })
+    type?: string | '';
+
+    @Field({ defaultValue: '/views/articles/' })
+    as!: string;
 }

@@ -8,6 +8,7 @@
 import gql from 'graphql-tag';
 import { ArticleInput } from "../../../src/articles/graphql/inputs/article.input";
 import { DocumentNode } from "graphql";
+import { DOOMSDAY } from "../../../system/category/categoryNames";
 
 /**
  *
@@ -21,7 +22,7 @@ export default (
     fields: string[] | string
 ): DocumentNode => gql`
     mutation {
-        ${type === 'DD' ? 'createDDArticle' : 'createNGArticle'} (
+        ${type === DOOMSDAY ? 'createDDArticle' : 'createNGArticle'} (
             input: ${JSON.stringify({...input, ...{type: type}})}   
         ) {
             ${Array.isArray(fields) ? fields.join(' ') : fields}
