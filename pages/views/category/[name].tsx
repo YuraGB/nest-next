@@ -10,7 +10,6 @@ import { ApolloQueryResult } from "apollo-client";
 
 import Layout from "../../../hoc/Layout/Layout";
 import img from "../../../assets/background/doomsdayClock.jpg";
-import getCategoryArticles from "../../graphql_requests/queries/getCategoryArticles";
 import { useEffect, useState } from "react";
 import useCustomHookInitState from "../../customHooks/useCustomHookInitState";
 import getArticles from "../../graphql_requests/queries/getArticles";
@@ -29,7 +28,6 @@ const Category: NextPage = (): JSX.Element => {
                     ));
         }
     }, [router]);
-    console.log(data);
 
     return (
         <Layout>
