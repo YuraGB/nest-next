@@ -40,7 +40,7 @@
     "helmet": "^3.23.3",
     "mongoose": "^5.9.19",
     "nest-next": "^9.2.0",
-    "next": "^9.0.3",
+    "next": "^11.1.0",
     "next-images": "^1.4.0",
     "nodemon": "^2.0.4",
     "postcss-apply": "^0.12.0",
